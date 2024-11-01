@@ -1,0 +1,52 @@
+{
+  "name": "scoredetect/timestamps",
+  "description": "Timestamp your WordPress content to empower your content authenticity and increase user trust with our blockchain timestamping solution.",
+  "type": "wordpress-plugin",
+  "keywords": ["wordpress", "plugin", "timestamp", "blockchain", "content", "authenticity", "copyright", "timestamps", "protection", "verification", "proof", "timestamping", "scoredetect"],
+  "license": ["AGPL-3.0-only"],
+  "authors": [
+    {
+      "name": "ScoreDetect",
+      "email": "info@scoredetect.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "^7.9"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "10up/phpcs-composer": "3.0.0",
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "brianhenryie/strauss": "^0.14.0"
+  },
+  "scripts": {
+    "lint": "phpcs .",
+    "lint-fix": "phpcbf .",
+    "strauss": [ "vendor/bin/strauss" ],
+    "post-install-cmd": [
+      "@strauss"
+    ],
+    "post-update-cmd": [
+      "@strauss"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "vendor/{$name}/": ["type:wordpress-plugin", "type:wordpress-theme"]
+    },
+    "strauss": {
+      "target_directory": "vendor-prefixed",
+      "namespace_prefix": "SDCOM_Timestamps\\Vendor_Prefixed\\",
+      "classmap_prefix": "SDCOM_Timestamps_Vendor_Prefixed_",
+      "constant_prefix": "SDCOM_TIMESTAMPS_VENDOR_"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}
